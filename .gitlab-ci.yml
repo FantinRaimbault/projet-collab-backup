@@ -1,7 +1,7 @@
-image: vincentcau/laravel-docker:latest
+image: lorisleiva/laravel-docker:8.0
 
 before_script:
-  - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+  - cd site && composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
 
 unit-test-job:
   script:
