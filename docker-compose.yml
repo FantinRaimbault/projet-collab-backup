@@ -15,28 +15,28 @@ services:
         env_file:
             - .env
     db:
-        image: mariadb:latest
+        image: mariadb:10.6.4
         environment:
-            MYSQL_ROOT_PASSWORD: 'password'
-            MYSQL_USER: 'blog'
-            MYSQL_PASSWORD: 'password'
-            MYSQL_DATABASE: 'blog'
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_DATABASE: ${DB_DATABASE}
         volumes:
             - mysqldata:/var/lib/mysql
         ports:
-            - 3307:3306
+            - 3307:${DB_PORT}
         networks:
             - database
     phpmyadmin:
-        image: phpmyadmin/phpmyadmin
+        image: phpmyadmin/phpmyadmin:5.1.1
         depends_on:
             - db
         ports:
             - 3333:80
         environment:
-            - PMA_HOST=db:3306
-            - PMA_USER=blog
-            - PMA_PASSWORD=password
+            - PMA_HOST=db:${DB_PORT}
+            - PMA_USER=${DB_USERNAME}
+            - PMA_PASSWORD=${DB_PASSWORD}
         networks:
             - database
 volumes:
