@@ -1,12 +1,14 @@
-image: lorisleiva/laravel-docker:8.0
+image: docker
 
 stages:
   - test
 
-before_script:
-  - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
-
 phpunit-test:
   stage: test
   script:
-    - vendor/bin/phpunit --coverage-text --colors=never
+    - docker-compose build
+    - docker-compose up -d
+    - docker exec php-collab composer install
+    - docker exec php-collab php artisan migrate
+    - docker exec php-collab php artisan db:seed
+    - cd site && vendor/bin/phpunit --coverage-text --colors=never
