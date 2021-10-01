@@ -14,7 +14,7 @@ phpunit-test:
     - docker exec php-collab php artisan db:seed
     - cd site && vendor/bin/phpunit --coverage-text --colors=never
   environment:
-      DB_USERNAME: ${DB_USERNAME}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_HOST: ${DB_HOST}
-      DB_DATABASE: ${DB_DATABASE}
+    DB_USERNAME: ${DB_USERNAME}
+    DB_PASSWORD: ${DB_PASSWORD}
+    DB_HOST: ${DB_HOST}
+    DB_DATABASE: ${DB_DATABASE}
