@@ -1,0 +1,11 @@
+
+stages:
+  - test
+
+unit-test-job:
+  stage: test
+  image: composer:2
+  script:
+    - cd site
+    - composer install
+    - vendor/bin/phpunit
