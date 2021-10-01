@@ -19,7 +19,6 @@
 <summary>Table of Contents</summary>
 
 - [About](#about)
-  - [Built With](#built-with)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
@@ -33,33 +32,45 @@
 
 ## About
 
-> **Simple API**
-> Implement best practices and new features on an existing project mixing Git and Docker
+**Simple API**
+Implement best practices and new features on an existing project mixing Git and Docker
 
-### Built With
-
-> **PHP WITH LUMEN AND MYSQL**
-> 
 ## Getting Started
 
 ### Prerequisites
 
-> You only need docker (version >= 12) installed on your computer.
+To clone and run this application, you only need docker (version >= 12) installed on your computer.
 
 ### Installation
 
-> git clone https://gitlab.com/92maximemalecot/projet-collaboratif
-> docker-compose up -d
+```bash
+# Clone this repository
+$ git clone https://gitlab.com/92maximemalecot/projet-collaboratif
 
-> **Only on first load**
-> docker exec -it *nom_container_php* /bin/bash
-> root# php artisan migrate
-> root# php artisan db:seed
+# Run the app
+$ docker-compose up -d
+```
+**Only on first load :**
+```bash
+# Open terminal in php container
+$ docker exec -it *nom_container_php* /bin/bash
+
+# Run all migrations
+$ php artisan migrate
+
+# Populate database
+$ php artisan db:seed
+```
 
 ## Usage
 
-> http://localhost:8080 => sample of json response
-> http://localhost:8080/currentTime => current time in milleseconds
+```bash
+# Sample of json response
+http://localhost:8080
+
+# Current time in milleseconds
+http://localhost:8080/currentTime
+```
 
 ## Authors & contributors
 
