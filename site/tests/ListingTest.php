@@ -15,7 +15,7 @@ class ListingTest extends TestCase
         $this->get('/');
 
         $this->assertEquals(
-            '{"status":"success","collection":[{"id":1,"name":"Transformers","type":"Comedy \/ Drama"},{"id":2,"name":"Knives out","type":"Mystery \/ Crime"}]}', $this->response->getContent()
+            '{"status":"success","collection":[{"id":1,"name":"Transformers","type":"Comedy \/ Drama"},{"id":2,"name":"Knives out","type":"Mystery \/ Crime"},{"id":3,"name":"Transformers","type":"Comedy \/ Drama"},{"id":4,"name":"Knives out","type":"Mystery \/ Crime"}]}', $this->response->getContent()
         );
     }
 }
