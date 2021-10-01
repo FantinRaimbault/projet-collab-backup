@@ -60,6 +60,15 @@ $ php artisan migrate
 
 # Populate database
 $ php artisan db:seed
+
+# To activate git hooks, type
+
+npm install
+
+npx husky install
+
+# if you have npx installed. Otherwise please install npx
+npm install -g npx
 ```
 
 ## Usage
