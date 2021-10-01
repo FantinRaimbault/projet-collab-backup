@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y libzip-dev zip libmemcached-dev libcurl
     && curl -sS https://getcomposer.org/installer | php\
     && mv composer.phar /usr/local/bin/\
     && ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
 COPY ./site /site 
 COPY ./vhost.conf /etc/apache2/sites-available/000-default.conf
 COPY ./apache.conf /etc/apache2/conf-available/z-app.conf
