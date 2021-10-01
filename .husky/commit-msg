@@ -5,7 +5,7 @@ modified_files=`git diff --cached --name-only --diff-filter=ACM`
 input_file=$1
 for file in $modified_files
 do
-    if [ "$file" != ".husky/pre-commit" ]; then
+    if [ "$file" != ".husky/commit-msg" ]; then
         if grep -q "print_r" $file || grep -q "var_dump" $file
             then
             echo "Found a print_r or a var_dump in $file, can't commit while still here"
