@@ -15,9 +15,7 @@ COPY ./apache.conf /etc/apache2/conf-available/z-app.conf
 COPY ./php.ini /usr/local/etc/php/conf.d/app.ini
 RUN a2enmod rewrite remoteip && \
     a2enconf z-app
-RUN composer selfupdate
 RUN composer update
-RUN composer install --prefer-source --no-interaction
 RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
-# ENV PATH="~/.composer/vendor/bin:./vendor/bin:${PATH}"
-# CMD ["apache2-foreground"]
+RUN composer install --no-interaction
+ENTRYPOINT ["apache2-foreground"]
