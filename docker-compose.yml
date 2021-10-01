@@ -1,0 +1,45 @@
+version: '3'
+services:
+    php:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ./site:/site/
+        ports:
+            - 8080:80
+        networks:
+            - database
+        depends_on:
+            - db
+        env_file:
+            - .env
+    db:
+        image: mariadb:latest
+        environment:
+            MYSQL_ROOT_PASSWORD: 'password'
+            MYSQL_USER: 'blog'
+            MYSQL_PASSWORD: 'password'
+            MYSQL_DATABASE: 'blog'
+        volumes:
+            - mysqldata:/var/lib/mysql
+        ports:
+            - 3307:3306
+        networks:
+            - database
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        depends_on:
+            - db
+        ports:
+            - 3333:80
+        environment:
+            - PMA_HOST=db:3306
+            - PMA_USER=blog
+            - PMA_PASSWORD=password
+        networks:
+            - database
+volumes:
+    mysqldata: {} 
+networks:
+    database:
