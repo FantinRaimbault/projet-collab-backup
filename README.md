@@ -62,7 +62,6 @@ $ php artisan migrate
 $ php artisan db:seed
 
 # To activate git hooks, type
-
 npm install
 
 npx husky install
