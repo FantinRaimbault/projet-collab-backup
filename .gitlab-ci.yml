@@ -5,4 +5,4 @@ before_script:
 
 unit-test-job:
   script:
-    - php site/vendor/bin/phpunit --coverage-text --colors=never
+    - php vendor/bin/phpunit --coverage-text --colors=never
